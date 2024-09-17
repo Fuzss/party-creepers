@@ -1,26 +1,30 @@
 package fuzs.partycreepers.handler;
 
+import com.google.common.collect.ImmutableList;
 import fuzs.partycreepers.PartyCreepers;
 import fuzs.partycreepers.config.ServerConfig;
 import fuzs.partycreepers.init.ModRegistry;
+import it.unimi.dsi.fastutil.ints.IntList;
+import it.unimi.dsi.fastutil.ints.IntLists;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.ListTag;
 import net.minecraft.util.FastColor;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.monster.Creeper;
 import net.minecraft.world.entity.projectile.FireworkRocketEntity;
-import net.minecraft.world.item.FireworkRocketItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.component.FireworkExplosion;
+import net.minecraft.world.item.component.Fireworks;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -38,9 +42,8 @@ public class CreeperConfettiHandler {
             if (level.getRandom().nextDouble() < PartyCreepers.CONFIG.get(ServerConfig.class).confettiChance) {
                 explosion.smallExplosionParticles = explosion.largeExplosionParticles = INVISIBLE_EXPLOSION_PARTICLES;
                 ItemStack itemStack = new ItemStack(Items.FIREWORK_ROCKET);
-                CompoundTag compoundTag = itemStack.getOrCreateTagElement(FireworkRocketItem.TAG_FIREWORKS);
                 boolean largeExplosion = entity instanceof Creeper creeper && creeper.isPowered();
-                addFireworkTag(compoundTag, level.getRandom(), largeExplosion);
+                itemStack.set(DataComponents.FIREWORKS, getFireworksComponent(level.getRandom(), largeExplosion));
                 // use an actual firework rocket to be compatible with vanilla clients,
                 // as otherwise there is no way of triggering firework particles client-side
                 FireworkRocketEntity fireworkRocketEntity = new FireworkRocketEntity(level,
@@ -55,26 +58,23 @@ public class CreeperConfettiHandler {
         }
     }
 
-    private static void addFireworkTag(CompoundTag itemTag, RandomSource randomSource, boolean largeExplosion) {
-        ListTag listTag = new ListTag();
-        itemTag.put(FireworkRocketItem.TAG_EXPLOSIONS, listTag);
+    private static Fireworks getFireworksComponent(RandomSource randomSource, boolean largeExplosion) {
+        List<FireworkExplosion> explosions = new ArrayList<>();
+        IntList colors = IntList.of(nextColorArray(randomSource));
+        FireworkExplosion.Shape shape = largeExplosion ?
+                FireworkExplosion.Shape.LARGE_BALL :
+                FireworkExplosion.Shape.SMALL_BALL;
+        explosions.add(new FireworkExplosion(shape, colors, IntLists.emptyList(), false, true));
+        explosions.add(new FireworkExplosion(FireworkExplosion.Shape.BURST, colors, IntLists.emptyList(), true, false));
+        return new Fireworks(0, ImmutableList.copyOf(explosions));
+    }
+
+    private static int[] nextColorArray(RandomSource randomSource) {
         int[] colors = new int[randomSource.nextInt(5) + 4];
         for (int i = 0; i < colors.length; i++) {
             colors[i] = nextColor(randomSource);
         }
-        CompoundTag compoundTag = new CompoundTag();
-        compoundTag.putIntArray(FireworkRocketItem.TAG_EXPLOSION_COLORS, colors);
-        compoundTag.putBoolean(FireworkRocketItem.TAG_EXPLOSION_FLICKER, true);
-        FireworkRocketItem.Shape shape = largeExplosion ?
-                FireworkRocketItem.Shape.LARGE_BALL :
-                FireworkRocketItem.Shape.SMALL_BALL;
-        compoundTag.putByte(FireworkRocketItem.TAG_EXPLOSION_TYPE, (byte) shape.getId());
-        listTag.add(compoundTag);
-        compoundTag = new CompoundTag();
-        compoundTag.putIntArray(FireworkRocketItem.TAG_EXPLOSION_COLORS, colors);
-        compoundTag.putBoolean(FireworkRocketItem.TAG_EXPLOSION_TRAIL, true);
-        compoundTag.putByte(FireworkRocketItem.TAG_EXPLOSION_TYPE, (byte) FireworkRocketItem.Shape.BURST.getId());
-        listTag.add(compoundTag);
+        return colors;
     }
 
     private static int nextColor(RandomSource randomSource) {
