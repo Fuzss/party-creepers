@@ -1,0 +1,6 @@
+accessWidener   v2  named
+accessible  field   net/minecraft/world/level/Explosion smallExplosionParticles Lnet/minecraft/core/particles/ParticleOptions;
+mutable field   net/minecraft/world/level/Explosion smallExplosionParticles Lnet/minecraft/core/particles/ParticleOptions;
+accessible  field   net/minecraft/world/level/Explosion largeExplosionParticles Lnet/minecraft/core/particles/ParticleOptions;
+mutable field   net/minecraft/world/level/Explosion largeExplosionParticles Lnet/minecraft/core/particles/ParticleOptions;
+accessible  method  net/minecraft/world/entity/projectile/FireworkRocketEntity  explode ()V
