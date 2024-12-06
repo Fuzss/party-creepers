@@ -22,15 +22,12 @@ public class ServerConfig implements ConfigCore {
         ALL;
 
         public boolean filter(Entity entity) {
-            if (this == NONE) {
-                return false;
-            } else if (this == LIVING_ONLY) {
-                return entity instanceof LivingEntity;
-            } else if (this == PLAYERS_ONLY) {
-                return entity instanceof Player;
-            } else {
-                return true;
-            }
+            return switch (this) {
+                case NONE -> false;
+                case LIVING_ONLY -> entity instanceof LivingEntity;
+                case PLAYERS_ONLY -> entity instanceof Player;
+                default -> true;
+            };
         }
     }
 }

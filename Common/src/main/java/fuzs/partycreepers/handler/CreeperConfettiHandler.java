@@ -19,6 +19,7 @@ import net.minecraft.util.ARGB;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityEvent;
 import net.minecraft.world.entity.monster.Creeper;
 import net.minecraft.world.entity.projectile.FireworkRocketEntity;
 import net.minecraft.world.item.ItemStack;
@@ -28,6 +29,7 @@ import net.minecraft.world.item.component.Fireworks;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.ServerExplosion;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.Vec3;
 
 import java.util.ArrayList;
@@ -42,6 +44,7 @@ public class CreeperConfettiHandler {
 
     public static EventResult onExplosionStart(ServerLevel serverLevel, ServerExplosion explosion) {
         if (isCreeperExplosion(explosion)) {
+            // copied from ServerLevel::explode, so that we can use our own explosion particle (which is invisible)
             explosion.explode();
             for (ServerPlayer serverPlayer : serverLevel.players()) {
                 if (serverPlayer.distanceToSqr(explosion.center()) < 4096.0) {
@@ -79,7 +82,10 @@ public class CreeperConfettiHandler {
                         entity.getZ(),
                         itemStack);
                 serverLevel.addFreshEntity(fireworkRocketEntity);
-                fireworkRocketEntity.explode(serverLevel);
+                // same as FireworkRocketEntity::explode without calling FireworkRocketEntity::dealExplosionDamage
+                serverLevel.broadcastEntityEvent(fireworkRocketEntity, EntityEvent.FIREWORKS_EXPLODE);
+                fireworkRocketEntity.gameEvent(GameEvent.EXPLODE, fireworkRocketEntity.getOwner());
+                fireworkRocketEntity.discard();
             }
         }
     }
