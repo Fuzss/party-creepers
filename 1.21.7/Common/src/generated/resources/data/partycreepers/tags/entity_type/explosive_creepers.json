@@ -1,9 +1,0 @@
-{
-  "values": [
-    "minecraft:creeper",
-    {
-      "id": "#creeperoverhaul:creepers",
-      "required": false
-    }
-  ]
-}
