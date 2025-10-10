@@ -1,4 +1,4 @@
-package fuzs.partycreepers.data;
+package fuzs.partycreepers.data.tags;
 
 import fuzs.partycreepers.init.ModRegistry;
 import fuzs.puzzleslib.api.data.v2.core.DataProviderContext;

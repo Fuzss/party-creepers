@@ -1,1 +1,2 @@
 accessWidener   v2  named
+accessible  field   net/minecraft/world/level/Level DEFAULT_EXPLOSION_BLOCK_PARTICLES   Lnet/minecraft/util/random/WeightedList;
