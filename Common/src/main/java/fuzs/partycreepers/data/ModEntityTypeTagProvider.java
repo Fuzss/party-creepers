@@ -15,8 +15,6 @@ public class ModEntityTypeTagProvider extends AbstractTagProvider<EntityType<?>>
 
     @Override
     public void addTags(HolderLookup.Provider provider) {
-        this.add(ModRegistry.EXPLOSIVE_CREEPERS_ENTITY_TYPE_TAG)
-                .add(EntityType.CREEPER)
-                .addOptionalTag("creeperoverhaul:creepers");
+        this.add(ModRegistry.EXPLOSIVE_CREEPERS_ENTITY_TYPE_TAG).add(EntityType.CREEPER).addOptionalTag("c:creepers");
     }
 }
