@@ -1,0 +1,61 @@
+{
+    "mod": {
+        "id": "partycreepers",
+        "group": "fuzs.partycreepers",
+        "name": "Party Creepers",
+        "version": "21.11.0",
+        "authors": [
+            "Fuzs"
+        ],
+        "description": "Creepers explode into beautiful confetti-like fireworks without any harm to your world.",
+        "license": "MPL-2.0"
+    },
+    "dependencies": [
+        {
+            "name": "fabricapi",
+            "type": "required",
+            "platforms": [
+                "fabric"
+            ]
+        },
+        {
+            "name": "forgeconfigapiport",
+            "type": "required",
+            "platforms": [
+                "fabric"
+            ]
+        },
+        {
+            "name": "puzzleslib",
+            "type": "required",
+            "platforms": [
+                "fabric",
+                "neoforge"
+            ]
+        }
+    ],
+    "links": [
+        {
+            "name": "curseforge",
+            "slug": "party-creepers",
+            "id": "1369583"
+        },
+        {
+            "name": "github",
+            "slug": "partycreepers"
+        },
+        {
+            "name": "modrinth",
+            "slug": "party-creepers",
+            "id": "YiQCYsjo"
+        }
+    ],
+    "environments": {
+        "client": "required",
+        "server": "required"
+    },
+    "platforms": [
+        "fabric",
+        "neoforge"
+    ]
+}
