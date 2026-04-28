@@ -1,13 +1,12 @@
-package fuzs.partycreepers;
+package fuzs.partycreepers.common;
 
-import fuzs.partycreepers.config.ServerConfig;
-import fuzs.partycreepers.handler.CreeperConfettiHandler;
-import fuzs.partycreepers.init.ModRegistry;
-import fuzs.puzzleslib.api.config.v3.ConfigHolder;
-import fuzs.puzzleslib.api.core.v1.ModConstructor;
+import fuzs.partycreepers.common.config.ServerConfig;
+import fuzs.partycreepers.common.handler.CreeperConfettiHandler;
+import fuzs.partycreepers.common.init.ModRegistry;
+import fuzs.puzzleslib.common.api.config.v3.ConfigHolder;
+import fuzs.puzzleslib.common.api.core.v1.ModConstructor;
 import net.minecraft.resources.Identifier;
-import fuzs.puzzleslib.api.event.v1.level.ExplosionEvents;
-import net.minecraft.resources.Identifier;
+import fuzs.puzzleslib.common.api.event.v1.level.ExplosionEvents;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

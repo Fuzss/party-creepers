@@ -1,8 +1,8 @@
 package fuzs.partycreepers.neoforge.client;
 
-import fuzs.partycreepers.PartyCreepers;
-import fuzs.partycreepers.client.PartyCreepersClient;
-import fuzs.puzzleslib.api.client.core.v1.ClientModConstructor;
+import fuzs.partycreepers.common.PartyCreepers;
+import fuzs.partycreepers.common.client.PartyCreepersClient;
+import fuzs.puzzleslib.common.api.client.core.v1.ClientModConstructor;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.fml.common.Mod;
 

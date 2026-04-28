@@ -1,10 +1,10 @@
-package fuzs.partycreepers.handler;
+package fuzs.partycreepers.common.handler;
 
 import com.google.common.collect.ImmutableList;
-import fuzs.partycreepers.PartyCreepers;
-import fuzs.partycreepers.config.ServerConfig;
-import fuzs.partycreepers.init.ModRegistry;
-import fuzs.puzzleslib.api.event.v1.core.EventResult;
+import fuzs.partycreepers.common.PartyCreepers;
+import fuzs.partycreepers.common.config.ServerConfig;
+import fuzs.partycreepers.common.init.ModRegistry;
+import fuzs.puzzleslib.common.api.event.v1.core.EventResult;
 import it.unimi.dsi.fastutil.ints.IntList;
 import it.unimi.dsi.fastutil.ints.IntLists;
 import net.minecraft.core.BlockPos;
@@ -56,7 +56,7 @@ public class CreeperConfettiHandler {
      */
     public static EventResult onExplosionStart(ServerLevel serverLevel, ServerExplosion explosion) {
         Entity entity = explosion.getDirectSourceEntity();
-        if (entity != null && entity.getType().is(ModRegistry.EXPLOSIVE_CREEPERS_ENTITY_TYPE_TAG)) {
+        if (entity != null && entity.is(ModRegistry.EXPLOSIVE_CREEPERS_ENTITY_TYPE_TAG)) {
             if (serverLevel.getRandom().nextDouble() < PartyCreepers.CONFIG.get(ServerConfig.class).confettiChance) {
                 summonFireworkParticles(serverLevel, entity);
             } else {
@@ -89,7 +89,7 @@ public class CreeperConfettiHandler {
 
     public static void onExplosionDetonate(ServerLevel serverLevel, ServerExplosion explosion, List<BlockPos> affectedBlocks, List<Entity> affectedEntities) {
         Entity entity = explosion.getDirectSourceEntity();
-        if (entity != null && entity.getType().is(ModRegistry.EXPLOSIVE_CREEPERS_ENTITY_TYPE_TAG)) {
+        if (entity != null && entity.is(ModRegistry.EXPLOSIVE_CREEPERS_ENTITY_TYPE_TAG)) {
             if (PartyCreepers.CONFIG.get(ServerConfig.class).dustParticles) {
                 explosionBlockCount = OptionalInt.of(affectedBlocks.size());
             } else {

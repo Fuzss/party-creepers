@@ -1,7 +1,7 @@
 package fuzs.partycreepers.fabric;
 
-import fuzs.partycreepers.PartyCreepers;
-import fuzs.puzzleslib.api.core.v1.ModConstructor;
+import fuzs.partycreepers.common.PartyCreepers;
+import fuzs.puzzleslib.common.api.core.v1.ModConstructor;
 import net.fabricmc.api.ModInitializer;
 
 public class PartyCreepersFabric implements ModInitializer {

@@ -1,7 +1,7 @@
-package fuzs.partycreepers.init;
+package fuzs.partycreepers.common.init;
 
-import fuzs.partycreepers.PartyCreepers;
-import fuzs.puzzleslib.api.init.v3.tags.TagFactory;
+import fuzs.partycreepers.common.PartyCreepers;
+import fuzs.puzzleslib.common.api.init.v3.tags.TagFactory;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.EntityType;
 
