@@ -7,9 +7,10 @@ import net.minecraft.world.entity.EntityType;
 
 public class ModRegistry {
     static final BoundTagFactory TAGS = BoundTagFactory.make(PartyCreepers.MOD_ID);
-    public static final TagKey<EntityType<?>> EXPLOSIVE_CREEPERS_ENTITY_TYPE_TAG = TAGS.registerEntityTypeTag("explosive_creepers");
+    public static final TagKey<EntityType<?>> EXPLOSIVE_CREEPERS_ENTITY_TYPE_TAG = TAGS.registerEntityTypeTag(
+            "explosive_creepers");
 
-    public static void touch() {
-
+    public static void bootstrap() {
+        // NO-OP
     }
 }

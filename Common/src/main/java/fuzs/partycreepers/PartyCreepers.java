@@ -19,11 +19,11 @@ public class PartyCreepers implements ModConstructor {
 
     @Override
     public void onConstructMod() {
-        ModRegistry.touch();
-        registerHandlers();
+        ModRegistry.bootstrap();
+        registerEventHandlers();
     }
 
-    private static void registerHandlers() {
+    private static void registerEventHandlers() {
         ExplosionEvents.DETONATE.register(CreeperConfettiHandler::onExplosionDetonate);
     }
 

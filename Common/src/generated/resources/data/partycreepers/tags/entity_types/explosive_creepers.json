@@ -2,6 +2,10 @@
   "values": [
     "minecraft:creeper",
     {
+      "id": "#c:creepers",
+      "required": false
+    },
+    {
       "id": "#creeperoverhaul:creepers",
       "required": false
     }

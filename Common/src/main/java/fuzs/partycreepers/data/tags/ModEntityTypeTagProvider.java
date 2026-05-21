@@ -1,4 +1,4 @@
-package fuzs.partycreepers.data;
+package fuzs.partycreepers.data.tags;
 
 import fuzs.partycreepers.init.ModRegistry;
 import fuzs.puzzleslib.api.data.v2.AbstractTagProvider;
@@ -15,6 +15,9 @@ public class ModEntityTypeTagProvider extends AbstractTagProvider.EntityTypes {
 
     @Override
     public void addTags(HolderLookup.Provider provider) {
-        this.tag(ModRegistry.EXPLOSIVE_CREEPERS_ENTITY_TYPE_TAG).add(EntityType.CREEPER).addOptionalTag(new ResourceLocation("creeperoverhaul:creepers"));
+        this.tag(ModRegistry.EXPLOSIVE_CREEPERS_ENTITY_TYPE_TAG)
+                .add(EntityType.CREEPER)
+                .addOptionalTag(new ResourceLocation("c:creepers"))
+                .addOptionalTag(new ResourceLocation("creeperoverhaul:creepers"));
     }
 }

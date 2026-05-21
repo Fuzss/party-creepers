@@ -1,7 +1,9 @@
 package fuzs.partycreepers.forge;
 
 import fuzs.partycreepers.PartyCreepers;
+import fuzs.partycreepers.data.tags.ModEntityTypeTagProvider;
 import fuzs.puzzleslib.api.core.v1.ModConstructor;
+import fuzs.puzzleslib.api.data.v2.core.DataProviderHelper;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLConstructModEvent;
@@ -13,5 +15,6 @@ public class PartyCreepersForge {
     @SubscribeEvent
     public static void onConstructMod(final FMLConstructModEvent evt) {
         ModConstructor.construct(PartyCreepers.MOD_ID, PartyCreepers::new);
+        DataProviderHelper.registerDataProviders(PartyCreepers.MOD_ID, ModEntityTypeTagProvider::new);
     }
 }
