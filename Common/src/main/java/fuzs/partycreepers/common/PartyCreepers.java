@@ -5,8 +5,8 @@ import fuzs.partycreepers.common.handler.CreeperConfettiHandler;
 import fuzs.partycreepers.common.init.ModRegistry;
 import fuzs.puzzleslib.common.api.config.v3.ConfigHolder;
 import fuzs.puzzleslib.common.api.core.v1.ModConstructor;
-import net.minecraft.resources.Identifier;
 import fuzs.puzzleslib.common.api.event.v1.level.ExplosionEvents;
+import net.minecraft.resources.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,8 +24,8 @@ public class PartyCreepers implements ModConstructor {
     }
 
     private static void registerEventHandlers() {
-        ExplosionEvents.START.register(CreeperConfettiHandler::onExplosionStart);
         ExplosionEvents.DETONATE.register(CreeperConfettiHandler::onExplosionDetonate);
+        ExplosionEvents.START.register(CreeperConfettiHandler::onExplosionStart);
     }
 
     public static Identifier id(String path) {

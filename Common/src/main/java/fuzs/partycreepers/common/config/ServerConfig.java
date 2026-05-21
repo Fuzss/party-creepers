@@ -6,6 +6,8 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 
+import java.util.function.Predicate;
+
 public class ServerConfig implements ConfigCore {
     @Config(description = "Disable damage to surrounding blocks when a creeper explodes.")
     public boolean preventTerrainDamage = true;
@@ -20,32 +22,30 @@ public class ServerConfig implements ConfigCore {
     @Config(description = "Always spawn dust and smoke particles from normal explosions, also together with confetti.")
     public boolean dustParticles = true;
 
-    public enum EntityDamage {
+    public enum EntityDamage implements Predicate<Entity> {
         NONE {
             @Override
-            public boolean appliesTo(Entity entity) {
+            public boolean test(Entity entity) {
                 return false;
             }
         },
         LIVING_ONLY {
             @Override
-            public boolean appliesTo(Entity entity) {
+            public boolean test(Entity entity) {
                 return entity instanceof LivingEntity;
             }
         },
         PLAYERS_ONLY {
             @Override
-            public boolean appliesTo(Entity entity) {
+            public boolean test(Entity entity) {
                 return entity instanceof Player;
             }
         },
         ALL {
             @Override
-            public boolean appliesTo(Entity entity) {
+            public boolean test(Entity entity) {
                 return true;
             }
         };
-
-        public abstract boolean appliesTo(Entity entity);
     }
 }
