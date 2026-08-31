@@ -1,9 +1,16 @@
 {
   "branches": {
-    "1.21.11": "archived",
-    "1.21.1": "maintained",
-    "26.1.x": "maintained",
     "1.20.1": "fixes",
+    "1.21.1": "maintained",
+    "1.21.11": "archived",
+    "26.1.x": "maintained",
     "26.2.x": "primary"
+  },
+  "properties": {
+    "distributions.curseforge.id": "1369583",
+    "distributions.curseforge.slug": "party-creepers",
+    "distributions.github.slug": "party-creepers",
+    "distributions.modrinth.id": "YiQCYsjo",
+    "distributions.modrinth.slug": "party-creepers"
   }
 }
