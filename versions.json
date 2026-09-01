@@ -6,11 +6,17 @@
     "26.1.x": "maintained",
     "26.2.x": "primary"
   },
-  "properties": {
-    "distributions.curseforge.id": "1369583",
-    "distributions.curseforge.slug": "party-creepers",
-    "distributions.github.slug": "party-creepers",
-    "distributions.modrinth.id": "YiQCYsjo",
-    "distributions.modrinth.slug": "party-creepers"
+  "distributions": {
+    "curseforge": {
+      "id": "1369583",
+      "slug": "party-creepers"
+    },
+    "github": {
+      "slug": "party-creepers"
+    },
+    "modrinth": {
+      "id": "YiQCYsjo",
+      "slug": "party-creepers"
+    }
   }
 }
