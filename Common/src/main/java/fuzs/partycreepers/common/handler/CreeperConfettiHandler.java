@@ -124,6 +124,7 @@ public class CreeperConfettiHandler {
                 entity.getEyeY(),
                 entity.getZ(),
                 itemStack);
+        fireworkRocketEntity.setSilent(entity.isSilent());
         serverLevel.addFreshEntity(fireworkRocketEntity);
         serverLevel.broadcastEntityEvent(fireworkRocketEntity, EntityEvent.FIREWORKS_EXPLODE);
         fireworkRocketEntity.gameEvent(GameEvent.EXPLODE, fireworkRocketEntity.getOwner());
