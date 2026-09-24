@@ -96,7 +96,8 @@ public class CreeperConfettiHandler {
                             playerKnockback,
                             INVISIBLE_EXPLOSION_PARTICLES,
                             SoundEvents.GENERIC_EXPLODE,
-                            ServerLevel.DEFAULT_EXPLOSION_BLOCK_PARTICLES));
+                            ServerLevel.DEFAULT_EXPLOSION_BLOCK_PARTICLES,
+                            !entity.isSilent()));
                 }
             }
 
